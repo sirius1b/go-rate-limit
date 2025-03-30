@@ -13,5 +13,5 @@ type Options struct {
 }
 
 func (o Options) toInternal() internal.Options {
-	return internal.Options{Limit: o.Limit, StartTime: o.StartTime, Window: o.Window}
+	return internal.Options{Limit: o.Limit, Window: o.Window}
 }
