@@ -1,6 +1,8 @@
 package pkg
 
 import (
+	"errors"
+
 	"github.com/sirius1b/go-rate-limit/internal"
 )
 
@@ -23,7 +25,7 @@ func Require(limiterType LimiterType, option Options) (IRateLimiter, error) {
 	case FixedWindow:
 		limiter = internal.NewFixedWindowLimiter(option.toInternal())
 	default:
-		panic("Unimplemnet") // FUTURE TODO:
+		return nil, errors.New("Umplemented")
 	}
 	return limiter, nil
 }
