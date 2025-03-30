@@ -83,9 +83,9 @@ func TestTokenBucket_Limit(t *testing.T) {
 	}
 	tb := NewTokenBucketLimiter(options)
 
-	limit := tb.Limit()
+	limit := tb.Rate()
 	if limit != 1 {
-		t.Errorf("Expected limit to be 1, got %d", limit)
+		t.Errorf("Expected limit to be 1, got %f", limit)
 	}
 
 	options = Options{
@@ -94,10 +94,10 @@ func TestTokenBucket_Limit(t *testing.T) {
 		RefillAmount:   10,
 	}
 	tb = NewTokenBucketLimiter(options)
-	limit = tb.Limit()
+	limit = tb.Rate()
 
 	if limit != 20 {
-		t.Errorf("Expected limit to be 20, got %d", limit)
+		t.Errorf("Expected limit to be 20, got %f", limit)
 	}
 }
 

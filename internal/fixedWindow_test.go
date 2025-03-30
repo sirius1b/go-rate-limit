@@ -59,8 +59,8 @@ func TestFixedWindowLimiter_Allow_Concurrency(t *testing.T) {
 
 	wg.Wait()
 
-	if allowedCount > limiter.Limit() {
-		t.Errorf("Allowed more requests than the limit. Allowed: %d, Limit: %d", allowedCount, limiter.Limit())
+	if limiter.Token(key) > 0 {
+		t.Errorf("Allowed more requests than the limit. Allowed: %d, Limit: %d", allowedCount, 10-limiter.Token(key))
 	}
 }
 
@@ -100,11 +100,11 @@ func TestFixedWindowLimiter_Limit(t *testing.T) {
 	limit := 5
 	limiter := NewFixedWindowLimiter(Options{
 		Limit:  limit,
-		Window: time.Second,
+		Window: time.Millisecond * 500,
 	})
 
-	if limiter.Limit() != limit {
-		t.Errorf("Limit should be %d, but was %d", limit, limiter.Limit())
+	if limiter.Rate() != 10 {
+		t.Errorf("Rate should be %d, but was %f", 10, limiter.Rate())
 	}
 }
 
