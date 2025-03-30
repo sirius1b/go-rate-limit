@@ -10,6 +10,7 @@ type LimiterType int
 
 const (
 	FixedWindow LimiterType = iota
+	TokenBucket
 )
 
 type IRateLimiter interface {
@@ -24,6 +25,9 @@ func Require(limiterType LimiterType, option Options) (IRateLimiter, error) {
 	switch limiterType {
 	case FixedWindow:
 		limiter = internal.NewFixedWindowLimiter(option.toInternal())
+
+	case TokenBucket:
+		internal.NewTokenBucketLimiter(option.toInternal())
 	default:
 		return nil, errors.New("Umplemented")
 	}

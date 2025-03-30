@@ -117,16 +117,16 @@ func TestFixedWindowLimiter_Token(t *testing.T) {
 	key := "test_key"
 
 	// Initial token count should be 0
-	if limiter.Token(key) != 0 {
-		t.Errorf("Initial token count should be 0, but was %d", limiter.Token(key))
+	if limiter.Token(key) != 3 {
+		t.Errorf("Initial token count should be 3, but was %d", limiter.Token(key))
 	}
 
 	// Allow one request
 	limiter.Allow(key)
 
 	// Token count should be 1
-	if limiter.Token(key) != 1 {
-		t.Errorf("Token count should be 1, but was %d", limiter.Token(key))
+	if limiter.Token(key) != 2 {
+		t.Errorf("Token count should be 2, but was %d", limiter.Token(key))
 	}
 
 	// Allow two more requests
@@ -134,24 +134,24 @@ func TestFixedWindowLimiter_Token(t *testing.T) {
 	limiter.Allow(key)
 
 	// Token count should be 3
-	if limiter.Token(key) != 3 {
-		t.Errorf("Token count should be 3, but was %d", limiter.Token(key))
+	if limiter.Token(key) != 0 {
+		t.Errorf("Token count should be 0, but was %d", limiter.Token(key))
 	}
 
 	// Wait for the window to pass
 	time.Sleep(time.Second)
 
 	// Token count should still be 3 because the startTime and limits are only updated inside the Allow function
-	if limiter.Token(key) != 3 {
-		t.Errorf("Token count should be 3 after waiting since it does not update on token call, but was %d", limiter.Token(key))
+	if limiter.Token(key) != 0 {
+		t.Errorf("Token count should be 0 after waiting since it does not update on token call, but was %d", limiter.Token(key))
 	}
 
 	// Call Allow one more time to reset the window and counter
 	limiter.Allow(key)
 
 	// Token count should be 1
-	if limiter.Token(key) != 1 {
-		t.Errorf("Token count should be 1 after allow, but was %d", limiter.Token(key))
+	if limiter.Token(key) != 2 {
+		t.Errorf("Token count should be 2 after allow, but was %d", limiter.Token(key))
 	}
 }
 

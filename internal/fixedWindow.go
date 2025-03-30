@@ -59,7 +59,7 @@ func (f *FixedWindowLimiter) Allow(key string) bool {
 	return false
 }
 
-func (f FixedWindowLimiter) Wait(key string) bool {
+func (f *FixedWindowLimiter) Wait(key string) bool {
 	mu := f.getMutex(key)
 	mu.Lock()
 	defer mu.Unlock()
@@ -84,11 +84,11 @@ func (f FixedWindowLimiter) Wait(key string) bool {
 	return true
 }
 
-func (f FixedWindowLimiter) Limit() int {
+func (f *FixedWindowLimiter) Limit() int {
 	return f.limit
 }
 
-func (f FixedWindowLimiter) Token(key string) int {
+func (f *FixedWindowLimiter) Token(key string) int {
 	mu := f.getMutex(key)
 	mu.Lock()
 	defer mu.Unlock()
@@ -100,5 +100,5 @@ func (f FixedWindowLimiter) Token(key string) int {
 		f.startTime[key] = now
 	}
 
-	return f.limits[key]
+	return f.limit - f.limits[key]
 }
