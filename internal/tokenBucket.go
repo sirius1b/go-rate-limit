@@ -72,8 +72,8 @@ func (f *TokenBucket) Wait(key string) bool {
 	return true
 }
 
-func (f *TokenBucket) Limit() int {
-	return int(float64(f.refillAmount) / float64(f.refillDuration.Seconds()))
+func (f *TokenBucket) Rate() float64 {
+	return float64(f.refillAmount) / float64(f.refillDuration.Seconds())
 }
 
 func (f *TokenBucket) Token(key string) int {

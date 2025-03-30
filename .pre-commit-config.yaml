@@ -7,11 +7,19 @@ repos:
       - id: check-yaml
       - id: check-added-large-files
 
+  - repo: local
+    hooks:
+      - id: go-vet
+        name: go vet
+        entry: bash -c 'cd $(git rev-parse --show-toplevel) && go vet ./pkg/... ./internal/...'
+        language: system
+        pass_filenames: false
+
   - repo: https://github.com/dnephin/pre-commit-golang
     rev: v0.5.1
     hooks:
       - id: go-fmt
-      - id: go-vet
+      # - id: go-vet
       - id: go-imports
       - id: go-cyclo
         args: [-over=15]

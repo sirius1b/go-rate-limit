@@ -84,8 +84,8 @@ func (f *FixedWindowLimiter) Wait(key string) bool {
 	return true
 }
 
-func (f *FixedWindowLimiter) Limit() int {
-	return f.limit
+func (f *FixedWindowLimiter) Rate() float64 {
+	return float64(f.limit) / float64(f.window.Seconds())
 }
 
 func (f *FixedWindowLimiter) Token(key string) int {
