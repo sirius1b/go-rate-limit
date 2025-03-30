@@ -23,7 +23,7 @@ func TestRequireFixedWindow(t *testing.T) {
 	// Basic allow test
 	key := "test_key"
 	allowed := 0
-	for limiter.Token(key) < options.Limit {
+	for limiter.Token(key) > 0 {
 		if limiter.Allow(key) {
 			allowed++
 		}
