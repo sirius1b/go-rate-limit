@@ -28,6 +28,8 @@ go get github.com/sirius1b/go-rate-limit
 
 ## 📦 Usage
 
+#### Fixed Window
+
 ```go
 
 
@@ -45,9 +47,8 @@ go get github.com/sirius1b/go-rate-limit
 ## 🛠 Features
 
 - Fixed Window Rate Limiting – Available now!
-- Sliding Window Rate Limiting – Coming soon!
+- Sliding Window Rate Limiting – Available
 - Token Bucket – Available !
-- Leaky Bucket – Even request distribution (Planned).
 - Distributed Rate Limiting – Redis-based implementation (Planned).
 
 ## 🤝 Contributing
