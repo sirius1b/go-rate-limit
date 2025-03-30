@@ -1,9 +1,9 @@
-# 🚀 RateLimit-Go: A Simple & Extensible Rate Limiting Library for Go
+# 🚀 go-rate-limit: A Simple & Extensible Rate Limiting Library for Go
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/yourusername/ratelimit-go)](https://goreportcard.com/report/github.com/yourusername/ratelimit-go)
+[![Go Report Card](https://goreportcard.com/badge/github.com/sirius1b/go-rate-limit)](https://goreportcard.com/report/github.com/sirius1b/go-rate-limit)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Go Reference](https://pkg.go.dev/badge/github.com/yourusername/ratelimit-go.svg)](https://pkg.go.dev/github.com/yourusername/ratelimit-go)
-[![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-ff69b4.svg)](https://github.com/yourusername/ratelimit-go/issues)
+[![Go Reference](https://pkg.go.dev/badge/github.com/sirius1b/go-rate-limit.svg)](https://pkg.go.dev/github.com/sirius1b/go-rate-limit)
+[![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-ff69b4.svg)](https://github.com/sirius1b/go-rate-limit/issues)
 
 ---
 
@@ -46,7 +46,7 @@ go get github.com/sirius1b/go-rate-limit
 
 - Fixed Window Rate Limiting – Available now!
 - Sliding Window Rate Limiting – Coming soon!
-- Token Bucket – Smooth request handling (Planned).
+- Token Bucket – Available !
 - Leaky Bucket – Even request distribution (Planned).
 - Distributed Rate Limiting – Redis-based implementation (Planned).
 
