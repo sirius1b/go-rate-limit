@@ -1,8 +1,10 @@
-package internal
+package slidingWindow
 
 import (
 	"sync"
 	"time"
+
+	internal "github.com/sirius1b/go-rate-limit/internal"
 )
 
 type SlidingWindow struct {
@@ -14,7 +16,7 @@ type SlidingWindow struct {
 	globalMu *sync.Mutex
 }
 
-func NewSlidingWindowLimiter(option Options) *SlidingWindow {
+func NewSlidingWindowLimiter(option internal.Options) *SlidingWindow {
 	return &SlidingWindow{
 
 		limit:    option.Limit,

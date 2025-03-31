@@ -1,7 +1,9 @@
 package pkg
 
 import (
-	"github.com/sirius1b/go-rate-limit/internal"
+	fw "github.com/sirius1b/go-rate-limit/internal/fixedWindow"
+	sw "github.com/sirius1b/go-rate-limit/internal/slidingWindow"
+	tb "github.com/sirius1b/go-rate-limit/internal/tokenBucket"
 )
 
 type LimiterType int
@@ -23,11 +25,11 @@ func Require(limiterType LimiterType, option Options) (IRateLimiter, error) {
 	var limiter IRateLimiter
 	switch limiterType {
 	case FixedWindow:
-		limiter = internal.NewFixedWindowLimiter(option.toInternal())
+		limiter = fw.NewFixedWindowLimiter(option.toInternal())
 	case TokenBucket:
-		limiter = internal.NewTokenBucketLimiter(option.toInternal())
+		limiter = tb.NewTokenBucketLimiter(option.toInternal())
 	case SlidingWindowLog:
-		limiter = internal.NewSlidingWindowLimiter(option.toInternal())
+		limiter = sw.NewSlidingWindowLimiter(option.toInternal())
 	}
 
 	return limiter, nil
