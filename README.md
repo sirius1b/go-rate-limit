@@ -1,8 +1,10 @@
 # 🚀 go-rate-limit: A Simple & Extensible Rate Limiting Library for Go
 
-[![Go Report Card](https://goreportcard.com/badge/github.com/sirius1b/go-rate-limit)](https://goreportcard.com/report/github.com/sirius1b/go-rate-limit)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![Go Reference](https://pkg.go.dev/badge/github.com/sirius1b/go-rate-limit.svg)](https://pkg.go.dev/github.com/sirius1b/go-rate-limit)
+![Go Version](https://img.shields.io/github/go-mod/go-version/sirius1b/go-rate-limit)
+![License](https://img.shields.io/github/license/sirius1b/go-rate-limit)
+![Issues](https://img.shields.io/github/issues/sirius1b/go-rate-limit)
+![Stars](https://img.shields.io/github/stars/sirius1b/go-rate-limit?style=social)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
 [![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-ff69b4.svg)](https://github.com/sirius1b/go-rate-limit/issues)
 
 ---
@@ -10,7 +12,7 @@
 ## ⚡ Overview
 
 `go-rate-limit` is a lightweight and easy-to-use rate limiting library for Go.
-Currently, it supports **Fixed Window** rate limiting, with more algorithms coming soon! 🚀
+Currently, it supports traditional rate limiting, with more algorithms coming soon! 🚀
 
 - ✅ **Simple API** – Minimal setup required.
 - ✅ **Thread-safe** – Designed for concurrent use.
