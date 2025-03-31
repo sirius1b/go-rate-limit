@@ -1,13 +1,15 @@
-package internal
+package fixedWindow
 
 import (
 	"sync"
 	"testing"
 	"time"
+
+	internal "github.com/sirius1b/go-rate-limit/internal"
 )
 
 func TestFixedWindowLimiter_Allow(t *testing.T) {
-	limiter := NewFixedWindowLimiter(Options{
+	limiter := NewFixedWindowLimiter(internal.Options{
 		Limit:  2,
 		Window: time.Second,
 	})
@@ -37,7 +39,7 @@ func TestFixedWindowLimiter_Allow(t *testing.T) {
 }
 
 func TestFixedWindowLimiter_Allow_Concurrency(t *testing.T) {
-	limiter := NewFixedWindowLimiter(Options{
+	limiter := NewFixedWindowLimiter(internal.Options{
 		Limit:  10,
 		Window: time.Second,
 	})
@@ -65,7 +67,7 @@ func TestFixedWindowLimiter_Allow_Concurrency(t *testing.T) {
 }
 
 func TestFixedWindowLimiter_Wait(t *testing.T) {
-	limiter := NewFixedWindowLimiter(Options{
+	limiter := NewFixedWindowLimiter(internal.Options{
 		Limit:  1,
 		Window: time.Millisecond * 100,
 	})
@@ -98,7 +100,7 @@ func TestFixedWindowLimiter_Wait(t *testing.T) {
 
 func TestFixedWindowLimiter_Limit(t *testing.T) {
 	limit := 5
-	limiter := NewFixedWindowLimiter(Options{
+	limiter := NewFixedWindowLimiter(internal.Options{
 		Limit:  limit,
 		Window: time.Millisecond * 500,
 	})
@@ -109,7 +111,7 @@ func TestFixedWindowLimiter_Limit(t *testing.T) {
 }
 
 func TestFixedWindowLimiter_Token(t *testing.T) {
-	limiter := NewFixedWindowLimiter(Options{
+	limiter := NewFixedWindowLimiter(internal.Options{
 		Limit:  3,
 		Window: time.Second,
 	})
@@ -156,7 +158,7 @@ func TestFixedWindowLimiter_Token(t *testing.T) {
 }
 
 func TestFixedWindowLimiter_MultipleKeys(t *testing.T) {
-	limiter := NewFixedWindowLimiter(Options{
+	limiter := NewFixedWindowLimiter(internal.Options{
 		Limit:  1,
 		Window: time.Second,
 	})

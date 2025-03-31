@@ -1,8 +1,10 @@
-package internal
+package fixedWindow
 
 import (
 	"sync"
 	"time"
+
+	internal "github.com/sirius1b/go-rate-limit/internal"
 )
 
 type FixedWindowLimiter struct {
@@ -23,7 +25,7 @@ func (s *FixedWindowLimiter) getMutex(key string) *sync.Mutex {
 	return s.mus[key]
 }
 
-func NewFixedWindowLimiter(option Options) *FixedWindowLimiter {
+func NewFixedWindowLimiter(option internal.Options) *FixedWindowLimiter {
 	return &FixedWindowLimiter{
 		limit:     option.Limit,
 		startTime: make(map[string]time.Time),

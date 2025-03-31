@@ -15,7 +15,7 @@ Currently, it supports **Fixed Window** rate limiting, with more algorithms comi
 - ✅ **Simple API** – Minimal setup required.
 - ✅ **Thread-safe** – Designed for concurrent use.
 - ✅ **Extensible** – More rate limiting algorithms will be added.
-- ✅ **Extensible** – More Caching Options will be added (REDIS)
+- ✅ **Extensible** – More Caching Options will be added (REDIS) - Planned
 - ✅ **Open for Contributions** – PRs are welcome! 🎉
 
 ---
@@ -43,6 +43,8 @@ go get github.com/sirius1b/go-rate-limit
     limiter.Wait(token_id) // hold till resource not available
 
 ```
+
+Checkout in examples!
 
 ## 🛠 Features
 

@@ -1,13 +1,15 @@
-package internal
+package slidingWindow
 
 import (
 	"sync"
 	"testing"
 	"time"
+
+	internal "github.com/sirius1b/go-rate-limit/internal"
 )
 
 func TestSlidingWindow_Allow(t *testing.T) {
-	option := Options{
+	option := internal.Options{
 		Limit:  3,
 		Window: time.Second,
 	}
@@ -49,7 +51,7 @@ func TestSlidingWindow_Allow(t *testing.T) {
 }
 
 func TestSlidingWindow_Rate(t *testing.T) {
-	option := Options{
+	option := internal.Options{
 		Limit:  10,
 		Window: time.Second * 2,
 	}
@@ -64,7 +66,7 @@ func TestSlidingWindow_Rate(t *testing.T) {
 }
 
 func TestSlidingWindow_Token(t *testing.T) {
-	option := Options{
+	option := internal.Options{
 		Limit:  5,
 		Window: time.Second,
 	}
@@ -97,7 +99,7 @@ func TestSlidingWindow_Token(t *testing.T) {
 }
 
 func TestSlidingWindow_Concurrency(t *testing.T) {
-	option := Options{
+	option := internal.Options{
 		Limit:  100,
 		Window: time.Second,
 	}
@@ -131,7 +133,7 @@ func TestSlidingWindow_Concurrency(t *testing.T) {
 }
 
 func TestSlidingWindow_RemoveSamples(t *testing.T) {
-	option := Options{
+	option := internal.Options{
 		Limit:  5,
 		Window: time.Second,
 	}
@@ -164,7 +166,7 @@ func TestSlidingWindow_RemoveSamples(t *testing.T) {
 }
 
 func TestSlidingWindow_Wait(t *testing.T) {
-	option := Options{
+	option := internal.Options{
 		Limit:  1,
 		Window: time.Second,
 	}

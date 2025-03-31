@@ -1,8 +1,10 @@
-package internal
+package tokenBucket
 
 import (
 	"sync"
 	"time"
+
+	internal "github.com/sirius1b/go-rate-limit/internal"
 )
 
 type TokenBucket struct {
@@ -24,7 +26,7 @@ func (s *TokenBucket) getMutex(key string) *sync.Mutex {
 	return s.mus[key]
 }
 
-func NewTokenBucketLimiter(option Options) *TokenBucket {
+func NewTokenBucketLimiter(option internal.Options) *TokenBucket {
 	return &TokenBucket{
 		capacity:       option.Capacity,
 		refillDuration: option.RefillDuration,

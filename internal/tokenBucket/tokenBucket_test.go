@@ -1,13 +1,15 @@
-package internal
+package tokenBucket
 
 import (
 	"sync"
 	"testing"
 	"time"
+
+	internal "github.com/sirius1b/go-rate-limit/internal"
 )
 
 func TestTokenBucket_Allow(t *testing.T) {
-	options := Options{
+	options := internal.Options{
 		Capacity:       10,
 		RefillDuration: time.Second,
 		RefillAmount:   1,
@@ -43,7 +45,7 @@ func TestTokenBucket_Allow(t *testing.T) {
 }
 
 func TestTokenBucket_Wait(t *testing.T) {
-	options := Options{
+	options := internal.Options{
 		Capacity:       1,
 		RefillDuration: time.Millisecond * 100,
 		RefillAmount:   1,
@@ -76,7 +78,7 @@ func TestTokenBucket_Wait(t *testing.T) {
 }
 
 func TestTokenBucket_Limit(t *testing.T) {
-	options := Options{
+	options := internal.Options{
 		Capacity:       10,
 		RefillDuration: time.Second,
 		RefillAmount:   1,
@@ -88,7 +90,7 @@ func TestTokenBucket_Limit(t *testing.T) {
 		t.Errorf("Expected limit to be 1, got %f", limit)
 	}
 
-	options = Options{
+	options = internal.Options{
 		Capacity:       10,
 		RefillDuration: time.Millisecond * 500,
 		RefillAmount:   10,
@@ -102,7 +104,7 @@ func TestTokenBucket_Limit(t *testing.T) {
 }
 
 func TestTokenBucket_Token(t *testing.T) {
-	options := Options{
+	options := internal.Options{
 		Capacity:       10,
 		RefillDuration: time.Second,
 		RefillAmount:   1,
@@ -146,7 +148,7 @@ func TestTokenBucket_Token(t *testing.T) {
 }
 
 func TestTokenBucket_Concurrency(t *testing.T) {
-	options := Options{
+	options := internal.Options{
 		Capacity:       10,
 		RefillDuration: time.Millisecond * 100,
 		RefillAmount:   1,
