@@ -1,6 +1,8 @@
 package pkg
 
 import (
+	"errors"
+
 	fw "github.com/sirius1b/go-rate-limit/internal/fixedWindow"
 	sw "github.com/sirius1b/go-rate-limit/internal/slidingWindow"
 	tb "github.com/sirius1b/go-rate-limit/internal/tokenBucket"
@@ -30,6 +32,8 @@ func Require(limiterType LimiterType, option Options) (IRateLimiter, error) {
 		limiter = tb.NewTokenBucketLimiter(option.toInternal())
 	case SlidingWindowLog:
 		limiter = sw.NewSlidingWindowLimiter(option.toInternal())
+	default:
+		return nil, errors.New("invalid case")
 	}
 
 	return limiter, nil
